@@ -1,9 +1,10 @@
 # coding=utf-8
 """
-
 ResourceLoader File
+------------------------------------------------------
 I will load any and all resources through the class
 in this file.
+I will also try to make all my main import statements here.
 """
 import os
 import pygame
