@@ -8,6 +8,7 @@ I will also try to make all my main import statements here.
 """
 import os
 import pygame
+from . import Buttons
 pygame.mixer.init(8000)  # All sound effects will have this sample rate
 
 if not pygame.font:
@@ -77,3 +78,11 @@ class ResourceLoader():
             print("Quitting!\n")
             raise SystemExit
         return sound
+
+    def make_button(self, gm, color=(107, 142, 35), x=0, y=0, length=200,
+                    height = 100, width=1, text="Example", text_color=(255,
+                                                                       255,
+                                                                       255)):
+        button = Buttons.Button(gm.screen, color, x, y, length, height, width,
+                                text, text_color)
+        return button

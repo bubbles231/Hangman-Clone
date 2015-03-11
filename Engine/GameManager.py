@@ -22,7 +22,7 @@ class GameManager:
                                                self.screen_width))
         pygame.display.set_caption("Hangman Clone!")
         self.playing = True
-        self.current_screen = SplashScreen()
+        self.current_screen = SplashScreen(self)
         self.previous_screen = None
 
     def get_input(self):
