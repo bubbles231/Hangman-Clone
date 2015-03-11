@@ -13,10 +13,14 @@ pygame.mixer.init(8000)  # All sound effects will have this sample rate
 if not pygame.font:
     print('Warning, fonts disabled')  # TODO: Use fonts
 if not pygame.mixer:
-    print('Warning, sound disabled')  # TODO: Use sound
+    print('Warning, sound disabled')
 
 
 class ResourceLoader():
+    """
+    ResourceLoader Class
+    I load all resources for my game here
+    """
 
     def __init__(self):
         pass
