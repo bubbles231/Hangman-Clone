@@ -1,9 +1,8 @@
+# coding=utf-8
 """
 This is the game manager class.
 Arthur Marble
 """
-# coding=utf-8
-import os
 import pygame
 from GameViews.SplashScreen import SplashScreen
 
@@ -27,15 +26,28 @@ class GameManager:
         self.previous_screen = None
 
     def get_input(self):
+        """
+        Handle Input
+        """
         self.current_screen.get_input(self)
 
     def recalculate(self):
+        """
+        Handle Logic
+        """
         self.current_screen.recalculate(self)
 
     def render(self):
+        """
+        Render Screen
+        """
         self.current_screen.render(self)
 
     def run_game_loop(self):
+        """
+        Game loop
+        This runs forever until self.playing is equal to False
+        """
         while self.playing:
             # Handle input
             self.get_input()
