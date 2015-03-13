@@ -1,5 +1,6 @@
 # coding=utf-8
 """
+
 ResourceLoader File
 ------------------------------------------------------
 I will load any and all resources through the class
@@ -19,6 +20,7 @@ if not pygame.mixer:
 
 class ResourceLoader():
     """
+
     ResourceLoader Class
     I load all resources for my game here
     """
@@ -79,10 +81,23 @@ class ResourceLoader():
             raise SystemExit
         return sound
 
-    def make_button(self, gm, color=(107, 142, 35), x=0, y=0, length=200,
+    def make_button(self, color=(107, 142, 35), x=0, y=0, length=200,
                     height = 100, width=1, text="Example", text_color=(255,
                                                                        255,
                                                                        255)):
-        button = Buttons.Button(gm.screen, color, x, y, length, height, width,
+        """
+
+        Makes me a button.
+        :type color: tuple
+        :type x: int or float
+        :type y: int or float
+        :type length: int
+        :type height: int
+        :type width: int
+        :type text: str
+        :type text_color: tuple
+        :return: Button.Button()
+        """
+        button = Buttons.Button(color, x, y, length, height, width,
                                 text, text_color)
         return button
