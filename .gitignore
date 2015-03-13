@@ -1,0 +1,11 @@
+# .gitignore
+
+# Python Artifacts
+*.pyc
+
+# Editor Artifacts
+*~
+*.#*
+
+# Pycharm
+*.idea*
