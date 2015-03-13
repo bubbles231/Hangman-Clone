@@ -28,7 +28,8 @@ class SplashScreen():
         :return: None
         """
         for event in pygame.event.get():
-            if event.type == pygame.QUIT:
+            if (event.type == pygame.QUIT or event.type == pygame.KEYDOWN and
+                    event.key == pygame.K_ESCAPE):
                 gm.playing = False
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if self.button_one.pressed(pygame.mouse.get_pos()):

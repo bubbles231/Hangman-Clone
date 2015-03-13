@@ -11,11 +11,13 @@ class MainMenu():
     """
 
     def __init__(self, gm):
-        self.bg = pygame.Surface((gm.screen_width, gm.screen_height))
+        self.bg = pygame.Surface((gm.screen_height, gm.screen_width))
         self.bg_rect = self.bg.get_rect()
         print("self.bg_rect:", self.bg_rect)
         self.bg_color = ((100, 140, 50))
         self.bg.fill(self.bg_color)
+        gm.screen.blit(self.bg, self.bg_rect)
+        pygame.display.flip
 
     def get_input(self, gm):
         """
@@ -23,7 +25,8 @@ class MainMenu():
         :return: None
         """
         for event in pygame.event.get():
-            if event.type == pygame.QUIT:
+            if (event.type == pygame.QUIT or event.type == pygame.KEYDOWN and
+                    event.key == pygame.K_ESCAPE):
                 gm.playing = False
             if event.type == pygame.MOUSEBUTTONDOWN:
                 gm.playing = False
