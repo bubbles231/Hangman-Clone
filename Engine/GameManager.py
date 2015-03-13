@@ -16,9 +16,9 @@ class GameManager:
     def __init__(self):
         pygame.init()
         # TODO: Make a menu where I modify the screen
-        self.screen_length = 640
+        self.screen_height = 640
         self.screen_width = 400
-        self.screen = pygame.display.set_mode((self.screen_length,
+        self.screen = pygame.display.set_mode((self.screen_height,
                                                self.screen_width))
         pygame.display.set_caption("Hangman Clone!")
         self.playing = True

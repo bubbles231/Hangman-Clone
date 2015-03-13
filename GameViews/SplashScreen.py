@@ -3,6 +3,7 @@
 This will be my SplashScreen file.
 """
 from Engine.ResourceLoader import *
+from . import MainMenu
 
 
 class SplashScreen():
@@ -14,11 +15,12 @@ class SplashScreen():
         self.splash, self.splash_rect = ResourceLoader().load_image(
             'Splash1.png')
         self.sound = ResourceLoader().load_sound('Splash_Sound1.wav')
-        self.button_one = ResourceLoader().make_button(gm, (110, 140, 35),
-                                                       200, 320,
-                                                       200, 100, 0, "Click"
+        self.button_one = ResourceLoader().make_button(gm, (251, 251, 251),
+                                                       gm.screen_height/2-50,
+                                                       gm.screen_width/2-25,
+                                                       100, 50, 0, "Click "
                                                                     "Me!",
-                                                       (255, 255, 255))
+                                                       (10, 10, 10))
 
     def get_input(self, gm):
         """
@@ -30,9 +32,8 @@ class SplashScreen():
                 gm.playing = False
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if self.button_one.pressed(pygame.mouse.get_pos()):
-                    print("Give me a command!")
+                    gm.current_screen = MainMenu.MainMenu(gm)
                     self.sound.play()
-                    print("Make Main Menu!")
 
     def recalculate(self, gm):
         """
