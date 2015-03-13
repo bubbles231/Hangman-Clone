@@ -17,7 +17,6 @@ class MainMenu():
         self.bg_color = ((100, 140, 50))
         self.bg.fill(self.bg_color)
         gm.screen.blit(self.bg, self.bg_rect)
-        pygame.display.flip
 
     def get_input(self, gm):
         """
