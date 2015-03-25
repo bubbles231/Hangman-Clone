@@ -15,6 +15,7 @@ from . import Buttons
 from GameViews import MainMenu
 from GameViews import Settings
 from GameViews import SplashScreen
+from GameViews import MainGame
 
 if not pygame.font:
     print('Warning, fonts disabled')
@@ -45,6 +46,8 @@ class ResourceLoader():
             return MainMenu(gm)
         elif string == "settings":
             return Settings(gm)
+        elif string == "main game":
+            return MainGame(gm)
 
     def load_image(self, name, color_key=None):
         """

@@ -67,7 +67,9 @@ class MainMenu():
                 if self.buttons['start 1 player'].pressed(
                         pygame.mouse.get_pos()):
                     self.b_sound2.play()
-                    print("Start has been pressed!")     # TODO: MainGame GV
+                    gm.current_screen = gm.resource_loader.load_class(
+                        "main game", gm)
+                    # print("Start has been pressed!")  # DEBUGGING
                 elif self.buttons['settings'].pressed(
                         pygame.mouse.get_pos()):
                     self.b_sound2.play()
