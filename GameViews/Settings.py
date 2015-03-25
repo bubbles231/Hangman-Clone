@@ -1,7 +1,7 @@
 # coding=utf-8
 """
 __Arthur Marble__
-This will be my MainMenu for the game.
+Settings screen for the game.
 """
 import pygame
 
@@ -21,13 +21,9 @@ def buttons_dict_maker(gm):
     x = gm.screen_rect.centerx - button_width / 2
     y = gm.screen_rect.centery - 150
     # print("x:", x, "y", y)  # DEBUGGING
-    buttons_dict['start 1 player'] = gm.resource_loader.make_button(
-        (251, 251, 255), x, y, button_width, button_height, 0, 'Start 1 '
-                                                               'Player',
-                                                            (10, 10, 10))
-    y += (button_height + padding)
-    buttons_dict['settings'] = gm.resource_loader.make_button(
-        (251, 251, 255), x, y, button_width, button_height, 0, 'Settings',
+    buttons_dict['fullscreen'] = gm.resource_loader.make_button(
+        (251, 251, 255), x, y, button_width, button_height, 0, 'Toggle '
+                                                               'Fullscreen',
                                                             (10, 10, 10))
     y += (button_height + padding)
     buttons_dict['quit'] = gm.resource_loader.make_button(
@@ -37,16 +33,37 @@ def buttons_dict_maker(gm):
     return buttons_dict
 
 
-class MainMenu():
+def change_res(gm):
+    """
+    Change the resolution of the screen
+    :param gm:
+    :return:
+    """
+    print("CHANGING RES!")
+    if not gm.fullscreen:
+        gm.fullscreen = True
+        gm.screen = pygame.display.set_mode((1600, 900), pygame.FULLSCREEN)
+        gm.screen_rect = gm.screen.get_rect()
+        print(gm.screen_rect)
+        gm.current_screen = gm.resource_loader.load_class("main menu", gm)
+    else:
+        gm.fullscreen = False
+        gm.screen = pygame.display.set_mode((640, 400))
+        gm.screen_rect = gm.screen.get_rect()
+        print(gm.screen_rect)
+        gm.current_screen = gm.resource_loader.load_class("main menu", gm)
+
+
+class Settings():
     """
 
-    Used by game to make the MainMenu.
+    Settings screen for the game.
     """
 
     def __init__(self, gm):
         self.bg = pygame.Surface((gm.screen_rect.width, gm.screen_rect.height))
         self.bg_rect = self.bg.get_rect()
-        self.bg_color = ((100, 140, 50))
+        self.bg_color = (10, 35, 140)
         self.bg.fill(self.bg_color)
         gm.screen.blit(self.bg, self.bg_rect)
         self.buttons = buttons_dict_maker(gm)
@@ -56,26 +73,21 @@ class MainMenu():
     def get_input(self, gm):
         """
 
-        :param gm: gm = GameManager Class
-        :return: None
+        :param gm:
+        :return:
         """
         for event in pygame.event.get():
             if (event.type == pygame.QUIT or event.type == pygame.KEYDOWN and
                     event.key == pygame.K_ESCAPE):
                 gm.playing = False
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if self.buttons['start 1 player'].pressed(
+                if self.buttons['fullscreen'].pressed(
                         pygame.mouse.get_pos()):
                     self.b_sound2.play()
-                    print("Start has been pressed!")     # TODO: MainGame GV
-                elif self.buttons['settings'].pressed(
-                        pygame.mouse.get_pos()):
-                    self.b_sound2.play()
-                    gm.current_screen = gm.resource_loader.load_class(
-                        "settings", gm)
+                    change_res(gm)
+                    print("Resolution has been pressed!")
                 elif self.buttons['quit'].pressed(
                         pygame.mouse.get_pos()):
-                    # print("Quit has been pressed!")    # DEBUGGING
                     self.b_sound2.play()
                     gm.playing = False
                 else:
@@ -83,22 +95,17 @@ class MainMenu():
 
     def recalculate(self, gm):
         """
-
-        Recalculate logic
-        :param gm: GameManager class
-        :return: None
+        :param gm:
+        :return:
         """
         pass
 
     def render(self, gm):
         """
-
-        Render the screen.
-        :param gm: GameManager class
-        :return: None
+        :param gm:
+        :return:
         """
-        self.buttons['start 1 player'].draw_button(self.bg)
-        self.buttons['settings'].draw_button(self.bg)
+        self.buttons['fullscreen'].draw_button(self.bg)
         self.buttons['quit'].draw_button(self.bg)
         gm.screen.blit(self.bg, self.bg_rect)
         pygame.display.flip()

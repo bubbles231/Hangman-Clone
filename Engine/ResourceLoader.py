@@ -10,6 +10,9 @@ I will also try to make all my main import statements here.
 import os
 import pygame
 from . import Buttons
+from GameViews import MainMenu
+from GameViews import Settings
+from GameViews import SplashScreen
 
 if not pygame.font:
     print('Warning, fonts disabled')
@@ -26,6 +29,20 @@ class ResourceLoader():
 
     def __init__(self):
         pass
+
+    def load_class(self, string, gm):
+        """
+        Load GameView classes
+        :param string:
+        :param gm: GameManager
+        :return: class
+        """
+        if string == "splash screen":
+            return SplashScreen(gm)
+        elif string == "main menu":
+            return MainMenu(gm)
+        elif string == "settings":
+            return Settings(gm)
 
     def load_image(self, name, color_key=None):
         """

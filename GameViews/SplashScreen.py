@@ -3,8 +3,7 @@
 __Arthur Marble__
 This will be my SplashScreen for the game.
 """
-from Engine.ResourceLoader import *
-from . import MainMenu
+import pygame
 
 
 class SplashScreen():
@@ -14,13 +13,16 @@ class SplashScreen():
     """
 
     def __init__(self, gm):
-        self.splash, self.splash_rect = ResourceLoader().load_image(
+        self.splash, self.splash_rect = gm.resource_loader.load_image(
             'Splash1.png')
-        self.sound = ResourceLoader().load_sound('Splash_Sound1.wav')
-        self.button_one = ResourceLoader().make_button(
+        self.b_sound1 = gm.resource_loader.load_sound('Splash_Sound1.wav')
+        self.b_sound2 = gm.resource_loader.load_sound('MouseButtonDown.wav')
+        self.button_one = gm.resource_loader.make_button(
             (251, 251, 251), gm.screen_rect.width / 2 - 50,
             gm.screen_rect.height / 2 - 25, 100, 50, 0, "Click Me!", (10, 10,
                                                                       10))
+        if gm.fullscreen:
+            pass  # It will never come to splash screen on fullscreen
 
     def get_input(self, gm):
         """
@@ -34,8 +36,11 @@ class SplashScreen():
                 gm.playing = False
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if self.button_one.pressed(pygame.mouse.get_pos()):
-                    gm.current_screen = MainMenu.MainMenu(gm)
-                    self.sound.play()
+                    gm.current_screen = gm.resource_loader.load_class(
+                        "main menu", gm)
+                    self.b_sound2.play()
+                else:
+                    self.b_sound1.play()
 
     def recalculate(self, gm):
         """
