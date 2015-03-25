@@ -8,6 +8,8 @@ in this file.
 I will also try to make all my main import statements here.
 """
 import os
+import re
+import random
 import pygame
 from . import Buttons
 from GameViews import MainMenu
@@ -117,3 +119,24 @@ class ResourceLoader():
         button = Buttons.Button(color, x, y, length, height, width,
                                 text, text_color)
         return button
+
+    def get_words(self):
+        """
+
+        Get word list and return a random word
+        :return:
+        """
+        file = open('Resources/Text/WordList.txt', 'r')
+        text = file.read().lower()
+        file.close()
+        # replaces anything that is not a lowercase letter, a space, or an
+        # apostrophe with a space:
+        text = re.sub('[^a-z\ \']+', " ", text)
+        words = list(text.split())
+        # print("Words:\n", words)  # DEBUGGING
+        word = random.choice(words)
+        # print("The word is:", word)  # DEBUGGING
+        return word
+
+if __name__ == "__main__":
+    ResourceLoader().get_words()
