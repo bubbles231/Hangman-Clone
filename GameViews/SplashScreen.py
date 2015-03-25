@@ -1,6 +1,7 @@
 # coding=utf-8
 """
-This will be my SplashScreen file.
+__Arthur Marble__
+This will be my SplashScreen for the game.
 """
 from Engine.ResourceLoader import *
 from . import MainMenu
@@ -9,7 +10,7 @@ from . import MainMenu
 class SplashScreen():
     """
 
-    Run the SplashScreen of the game.
+    Used by game to make the SplashScreen
     """
 
     def __init__(self, gm):

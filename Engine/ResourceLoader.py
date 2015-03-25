@@ -1,6 +1,6 @@
 # coding=utf-8
 """
-
+__Arthur Marble__
 ResourceLoader File
 ------------------------------------------------------
 I will load any and all resources through the class
@@ -10,7 +10,6 @@ I will also try to make all my main import statements here.
 import os
 import pygame
 from . import Buttons
-pygame.mixer.init(8000)  # All sound effects will have this sample rate
 
 if not pygame.font:
     print('Warning, fonts disabled')  # TODO: Use fonts

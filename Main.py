@@ -1,8 +1,7 @@
 # coding=utf-8
 """
-
-Main File for Hangman game. This is where all the magic
-starts - Arthur Marble
+__Arthur Marble__
+Main File for Hangman game. This is where all the magic starts.
 """
 from Engine.GameManager import *
 
@@ -10,7 +9,9 @@ from Engine.GameManager import *
 def main():
     """
 
-    Main Function
+    __Main Function__
+    Call GameManger ( class) run_game_loop() function to start the main game
+    loop. Imported from Engine directory/folder.
     """
     GameManager().run_game_loop()
 

@@ -1,8 +1,8 @@
 # coding=utf-8
 """
-
-This is the game manager class.
-Arthur Marble
+__Arthur Marble__
+This is the game manager class. It includes the main game loop and runs until
+the program ends. It is a parent class to GameView classes.
 """
 import pygame
 from GameViews.SplashScreen import SplashScreen
@@ -16,13 +16,21 @@ class GameManager:
 
     def __init__(self):
         pygame.init()
-        # TODO: Make a menu where I modify the screen
-        self.screen_height = 640
-        self.screen_width = 400
+        self.screen_height = 640  # TODO: Make a menu where I modify the screen
+        self.screen_width = 400   # -->Size.
+        self.fps = 60             # TODO: Make this adjustable in Settings.
+        self.playing = True
+        self.caption = "Hangman Clone!"
+        self.sample_rate = 8000   # This should remain at 8000.
         self.screen = pygame.display.set_mode((self.screen_height,
                                                self.screen_width))
-        pygame.display.set_caption("Hangman Clone!")
-        self.playing = True
+        pygame.display.set_caption(self.caption)
+        pygame.mixer.init(8000)   # All sound effects will have this sample rate
+        """
+        Hardcoded to SplashScreen because that is how the game is designed to
+        start. If you want another GameView class make your own set or modify
+        my code.
+        """
         self.current_screen = SplashScreen(self)
         self.previous_screen = None
 
@@ -51,7 +59,8 @@ class GameManager:
         """
 
         Game loop
-        This runs forever until self.playing is equal to False
+        This runs forever until self.playing is equal to false or when
+        self.current_screen = None (Would cause crash/not clean exit atm.)
         """
         while self.playing:
             # Handle input
@@ -63,4 +72,4 @@ class GameManager:
             # Render screen
             self.render()
 
-            pygame.time.Clock().tick(60)  # TODO: Make fps adjustable in setting
+            pygame.time.Clock().tick(self.fps)

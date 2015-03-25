@@ -1,8 +1,7 @@
 # coding=utf-8
 """
-
+Modified by __Arthur Marble__
 Original module by Simon H. Larsen: http://lagusan.com/button-drawer-python-2-6/
-Modified by Arthur Marble
 """
 import pygame
 import pygame.locals

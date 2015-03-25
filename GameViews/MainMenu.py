@@ -1,17 +1,18 @@
 # coding=utf-8
 """
-
-This will be my MainMenu file.
+__Arthur Marble__
+This will be my MainMenu for the game.
 """
 from Engine.ResourceLoader import *
 
 
 def buttons_dict_maker():
     """
-
-    Make a dict of buttons for this GameView Class
-    :return:
+    Make a dict of buttons for this GameView Class,
+    Edit this for button placement.
+    :return: buttons_dict
     """
+    # TODO: Don't hardcode button placement.
     buttons_dict = {}
     buttons_dict['start 1 player'] = ResourceLoader().make_button(
         (251, 251, 255), 0, 0, 300, 50, 0, 'Start 1 Player', (10, 10, 10))
@@ -26,7 +27,7 @@ def buttons_dict_maker():
 class MainMenu():
     """
 
-    Run the MainMenu of game.
+    Used by game to make the MainMenu.
     """
 
     def __init__(self, gm):
@@ -50,20 +51,20 @@ class MainMenu():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if self.buttons['start 1 player'].pressed(
                         pygame.mouse.get_pos()):
-                    print("Start has been pressed!")
+                    print("Start has been pressed!")     # TODO: MainGame GV
                 elif self.buttons['settings'].pressed(
                         pygame.mouse.get_pos()):
-                    print("Settings has been pressed!")
+                    print("Settings has been pressed!")  # TODO: Settings GV
                 elif self.buttons['quit'].pressed(
                         pygame.mouse.get_pos()):
-                    # print("Quit has been pressed!")  # DEBUGGING
+                    # print("Quit has been pressed!")    # DEBUGGING
                     gm.playing = False
 
     def recalculate(self, gm):
         """
 
         Recalculate logic
-        :param gm: GameManager parent class
+        :param gm: GameManager class
         :return: None
         """
         pass
@@ -71,8 +72,8 @@ class MainMenu():
     def render(self, gm):
         """
 
-        Paint screen.
-        :param gm: GameManager parent class
+        Render the screen.
+        :param gm: GameManager class
         :return: None
         """
         self.buttons['start 1 player'].draw_button(self.bg)
