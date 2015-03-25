@@ -12,7 +12,7 @@ import pygame
 from . import Buttons
 
 if not pygame.font:
-    print('Warning, fonts disabled')  # TODO: Use fonts
+    print('Warning, fonts disabled')
 if not pygame.mixer:
     print('Warning, sound disabled')
 

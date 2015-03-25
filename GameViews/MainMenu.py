@@ -6,16 +6,23 @@ This will be my MainMenu for the game.
 from Engine.ResourceLoader import *
 
 
-def buttons_dict_maker():
+def buttons_dict_maker(gm):
     """
     Make a dict of buttons for this GameView Class,
     Edit this for button placement.
+    :param gm: Pass GameManger to get screen dimensions
     :return: buttons_dict
     """
     # TODO: Don't hardcode button placement.
     buttons_dict = {}
+    button_width = 200
+    button_height = 100
+    x, y = (gm.screen_width // 2 - button_width), (gm.screen_height // 2 -
+                                                   button_height)
     buttons_dict['start 1 player'] = ResourceLoader().make_button(
-        (251, 251, 255), 0, 0, 300, 50, 0, 'Start 1 Player', (10, 10, 10))
+        (251, 251, 255), x, y, button_width, button_height, 0, 'Start 1 '
+                                                               'Player',
+                                                            (10, 10, 10))
     buttons_dict['settings'] = ResourceLoader().make_button(
         (251, 251, 255), 100, 150, 200, 50, 0, 'Settings', (10, 10, 10))
     buttons_dict['quit'] = ResourceLoader().make_button(
@@ -36,7 +43,7 @@ class MainMenu():
         self.bg_color = ((100, 140, 50))
         self.bg.fill(self.bg_color)
         gm.screen.blit(self.bg, self.bg_rect)
-        self.buttons = buttons_dict_maker()
+        self.buttons = buttons_dict_maker(gm)
 
     def get_input(self, gm):
         """

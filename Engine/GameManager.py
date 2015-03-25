@@ -16,7 +16,7 @@ class GameManager:
 
     def __init__(self):
         pygame.init()
-        self.screen_height = 640  # TODO: Make a menu where I modify the screen
+        self.screen_height = 640  # TODO: Make this adjustable in Settings.
         self.screen_width = 400   # -->Size.
         self.fps = 60             # TODO: Make this adjustable in Settings.
         self.playing = True
