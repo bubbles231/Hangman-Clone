@@ -13,20 +13,26 @@ def buttons_dict_maker(gm):
     :param gm: Pass GameManger to get screen dimensions
     :return: buttons_dict
     """
-    # TODO: Don't hardcode button placement.
+    # TODO: Add code to update button position when screen resolution changes.
     buttons_dict = {}
     button_width = 200
-    button_height = 100
-    x, y = (gm.screen_width // 2 - button_width), (gm.screen_height // 2 -
-                                                   button_height)
+    button_height = 50
+    padding = 50
+    x = gm.screen_rect.centerx - button_width / 2
+    y = gm.screen_rect.centery - 150
+    print("x:", x, "y", y)
     buttons_dict['start 1 player'] = ResourceLoader().make_button(
         (251, 251, 255), x, y, button_width, button_height, 0, 'Start 1 '
                                                                'Player',
                                                             (10, 10, 10))
+    y += (button_height + padding)
     buttons_dict['settings'] = ResourceLoader().make_button(
-        (251, 251, 255), 100, 150, 200, 50, 0, 'Settings', (10, 10, 10))
+        (251, 251, 255), x, y, button_width, button_height, 0, 'Settings',
+                                                            (10, 10, 10))
+    y += (button_height + padding)
     buttons_dict['quit'] = ResourceLoader().make_button(
-        (251, 251, 255), 200, 250, 100, 50, 0, 'Quit!', (10, 10, 10))
+        (251, 251, 255), x, y, button_width, button_height, 0, 'Quit!',
+                                                            (10, 10, 10))
 
     return buttons_dict
 
@@ -38,7 +44,7 @@ class MainMenu():
     """
 
     def __init__(self, gm):
-        self.bg = pygame.Surface((gm.screen_height, gm.screen_width))
+        self.bg = pygame.Surface((gm.screen_rect.width, gm.screen_rect.height))
         self.bg_rect = self.bg.get_rect()
         self.bg_color = ((100, 140, 50))
         self.bg.fill(self.bg_color)

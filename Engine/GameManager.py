@@ -16,14 +16,15 @@ class GameManager:
 
     def __init__(self):
         pygame.init()
-        self.screen_height = 640  # TODO: Make this adjustable in Settings.
-        self.screen_width = 400   # -->Size.
+        self.screen_width = 640   # TODO: Make this adjustable in Settings.
+        self.screen_height = 400  # -->Size.
         self.fps = 60             # TODO: Make this adjustable in Settings.
         self.playing = True
         self.caption = "Hangman Clone!"
         self.sample_rate = 8000   # This should remain at 8000.
-        self.screen = pygame.display.set_mode((self.screen_height,
-                                               self.screen_width))
+        self.screen = pygame.display.set_mode((self.screen_width,
+                                               self.screen_height))
+        self.screen_rect = self.screen.get_rect()
         pygame.display.set_caption(self.caption)
         pygame.mixer.init(8000)   # All sound effects will have this sample rate
         """

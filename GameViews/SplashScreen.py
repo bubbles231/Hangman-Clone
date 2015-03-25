@@ -18,8 +18,9 @@ class SplashScreen():
             'Splash1.png')
         self.sound = ResourceLoader().load_sound('Splash_Sound1.wav')
         self.button_one = ResourceLoader().make_button(
-            (251, 251, 251), gm.screen_height / 2 - 50,
-            gm.screen_width / 2 - 25, 100, 50, 0, "Click Me!", (10, 10, 10))
+            (251, 251, 251), gm.screen_rect.width / 2 - 50,
+            gm.screen_rect.height / 2 - 25, 100, 50, 0, "Click Me!", (10, 10,
+                                                                      10))
 
     def get_input(self, gm):
         """
