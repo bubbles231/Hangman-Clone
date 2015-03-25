@@ -22,13 +22,13 @@ class GameManager:
         self.fps = 60
         self.playing = True
         self.caption = "Hangman Clone!"
-        self.sample_rate = 8000   # This should remain at 8000.
+        self.sample_rate = 8000  # This should remain at 8000.
         self.screen = pygame.display.set_mode((self.screen_width,
                                                self.screen_height),
                                               pygame.RESIZABLE)
         self.screen_rect = self.screen.get_rect()
         pygame.display.set_caption(self.caption)
-        pygame.mixer.init(8000)   # All sound effects will have this sample rate
+        pygame.mixer.init(self.sample_rate)  # All sound effects will have this sample rate
         """
         Hardcoded to SplashScreen because that is how the game is designed to
         start. If you want another GameView class make your own set or modify
@@ -79,3 +79,5 @@ class GameManager:
             self.render()
 
             pygame.time.Clock().tick(self.fps)
+        else:
+            pygame.quit()
