@@ -23,9 +23,7 @@ class GameManager:
         self.playing = True
         self.caption = "Hangman Clone!"
         self.sample_rate = 8000  # This should remain at 8000.
-        self.screen = pygame.display.set_mode((self.screen_width,
-                                               self.screen_height))
-
+        self.screen = pygame.display.set_mode((self.screen_width, self.screen_height))
         self.screen_rect = self.screen.get_rect()
         pygame.display.set_caption(self.caption)
         pygame.mixer.init(self.sample_rate)  # All sound effects will have this sample rate

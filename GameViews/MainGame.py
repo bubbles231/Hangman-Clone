@@ -132,6 +132,12 @@ class MainGame(object):
         pygame.display.update()
 
     def check_guess(self, guess, gm):
+        """
+
+        @param guess: Letter guessed by player
+        @param gm: GameManager Class
+        @return:
+        """
         for i in self.already_guess:
             if guess == i:
                 print("You have already guessed this letter!")
@@ -160,6 +166,11 @@ class MainGame(object):
 
     @staticmethod
     def print_my_word(word):
+        """
+
+        @param word: Dictionary of words
+        @return: str
+        """
         tmp = ""
         for i in word:
             tmp += word[i]
