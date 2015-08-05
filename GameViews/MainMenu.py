@@ -16,12 +16,16 @@ def buttons_dict_maker(gm):
     buttons_dict = {}
     button_width = 200
     button_height = 50
-    padding = 50
+    padding = 25
     x = gm.screen_rect.centerx - button_width / 2
     y = gm.screen_rect.centery - 150
     # print("x:", x, "y", y)  # DEBUGGING
     buttons_dict['start hangman'] = gm.resource_loader.make_button(
         (251, 251, 255), x, y, button_width, button_height, 0, 'Start Hangman',
+        (10, 10, 10))
+    y += (button_height + padding)
+    buttons_dict['start game2'] = gm.resource_loader.make_button(
+        (251, 251, 255), x, y, button_width, button_height, 0, 'Start game2',
         (10, 10, 10))
     y += (button_height + padding)
     buttons_dict['settings'] = gm.resource_loader.make_button(
@@ -67,6 +71,10 @@ class MainMenu(object):
                     self.b_sound2.play()
                     gm.current_screen = gm.resource_loader.load_class(
                         "main game", gm)
+                elif self.buttons['start game2'].pressed(
+                        pygame.mouse.get_pos()):
+                    self.b_sound2.play()
+                    print("Make Game #2!")
                 elif self.buttons['settings'].pressed(
                         pygame.mouse.get_pos()):
                     self.b_sound2.play()
@@ -97,6 +105,7 @@ class MainMenu(object):
         :return: None
         """
         self.buttons['start hangman'].draw_button(self.bg)
+        self.buttons['start game2'].draw_button(self.bg)
         self.buttons['settings'].draw_button(self.bg)
         self.buttons['quit'].draw_button(self.bg)
         gm.screen.blit(self.bg, self.bg_rect)
