@@ -6,6 +6,7 @@ This will be my SplashScreen for the game.
 import pygame
 
 
+# noinspection PyMethodMayBeStatic,PyMethodMayBeStatic
 class SplashScreen(object):
     """
 
@@ -41,6 +42,7 @@ class SplashScreen(object):
                 else:
                     self.b_sound1.play()
 
+    # noinspection PyMethodMayBeStatic
     def recalculate(self, gm):
         """
 

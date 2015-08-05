@@ -44,7 +44,7 @@ class MainMenu(object):
     def __init__(self, gm):
         self.bg = pygame.Surface((gm.screen_rect.width, gm.screen_rect.height))
         self.bg_rect = self.bg.get_rect()
-        self.bg_color = ((150, 150, 150))
+        self.bg_color = (150, 150, 150)
         self.bg.fill(self.bg_color)
         gm.screen.blit(self.bg, self.bg_rect)
         self.buttons = buttons_dict_maker(gm)
@@ -79,6 +79,7 @@ class MainMenu(object):
                 else:
                     self.b_sound1.play()
 
+    # noinspection PyMethodMayBeStatic
     def recalculate(self, gm):
         """
 

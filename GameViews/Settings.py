@@ -97,6 +97,7 @@ class Settings(object):
                 else:
                     self.b_sound1.play()
 
+    # noinspection PyMethodMayBeStatic
     def recalculate(self, gm):
         """
         :param gm:
