@@ -7,7 +7,7 @@ This will be the main game class.
 import pygame
 
 
-class MainGame():
+class MainGame(object):
     """
 
     The main game class.
@@ -23,7 +23,7 @@ class MainGame():
         for i in range(0, len(self.word)):
             self.guess_word[i] = "_"
         print("Welcome to Hangman!")
-        self.print_my_word(self.guess_word)
+        print(self.print_my_word(self.guess_word))
         self.hangman_cnt = 7
         self.key_guess = ""
         self.already_guess = []
@@ -34,6 +34,11 @@ class MainGame():
         gm.screen.blit(self.bg, self.bg_rect)
         self.b_sound1 = gm.resource_loader.load_sound('Splash_Sound1.wav')
         self.b_sound2 = gm.resource_loader.load_sound('MouseButtonDown.wav')
+
+        # Debug
+        self.gw_button = gm.resource_loader.make_button(
+            (251, 251, 251), 0, gm.screen_rect.height - 50, 100, 50, 0,
+            self.print_my_word(self.guess_word), (10, 10, 10))
 
     def get_input(self, gm):
         """
@@ -101,7 +106,6 @@ class MainGame():
                     key_guess = 'z'
                 self.key_guess = key_guess
 
-
     def recalculate(self, gm):
         """
 
@@ -111,14 +115,12 @@ class MainGame():
         if self.hangman_cnt == 0:
             print("You Lost! :(")
             print("The word was:")
-            self.print_my_word(self.word)
-            gm.current_screen = gm.resource_loader.load_class(
-                "main menu", gm)
+            print(self.print_my_word(self.word))
+            gm.current_screen = gm.resource_loader.load_class("main menu", gm)
 
         if self.key_guess != "":
             self.check_guess(self.key_guess, gm)
         self.key_guess = ""
-
 
     def render(self, gm):
         """
@@ -126,8 +128,8 @@ class MainGame():
         :param gm:
         :return:
         """
+        self.gw_button.draw_button(gm.screen)
         pygame.display.update()
-
 
     def check_guess(self, guess, gm):
         for i in self.already_guess:
@@ -142,7 +144,9 @@ class MainGame():
 
         if correct_guess:
             print("Good Guess, you found a letter!")
-            self.print_my_word(self.guess_word)
+            print(self.print_my_word(self.guess_word))
+            self.already_guess.append(guess)
+            self.gw_button.text = self.print_my_word(self.guess_word)
             if self.guess_word == self.word:
                 print("You Win!")
                 gm.current_screen = gm.resource_loader.load_class(
@@ -151,13 +155,12 @@ class MainGame():
             print("That letter isn't in the word, try again...")
             print("What you have guessed so far:")
             self.already_guess.append(guess)
-            self.print_my_word(self.guess_word)
+            print(self.print_my_word(self.guess_word))
             self.hangman_cnt -= 1
-
 
     @staticmethod
     def print_my_word(word):
         tmp = ""
         for i in word:
             tmp += word[i]
-        print(tmp, '\n')
+        return tmp

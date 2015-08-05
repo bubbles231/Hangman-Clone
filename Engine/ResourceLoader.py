@@ -23,7 +23,7 @@ if not pygame.mixer:
     print('Warning, sound disabled')
 
 
-class ResourceLoader():
+class ResourceLoader(object):
     """
 
     ResourceLoader Class
@@ -33,7 +33,8 @@ class ResourceLoader():
     def __init__(self):
         pass
 
-    def load_class(self, string, gm):
+    @staticmethod
+    def load_class(string, gm):
         """
         Load GameView classes
         :param string:
@@ -49,7 +50,8 @@ class ResourceLoader():
         elif string == "main game":
             return MainGame(gm)
 
-    def load_image(self, name, color_key=None):
+    @staticmethod
+    def load_image(name, color_key=None):
         """
 
         :param name: Name of the image file
@@ -69,13 +71,15 @@ class ResourceLoader():
             image.set_colorkey(color_key, pygame.RLEACCEL)
         return image, image.get_rect()
 
-    def load_sound(self, name):
+    @staticmethod
+    def load_sound(name):
         """
 
         :param name: Name of the sound file
         :return: Pygame sound file
         """
-        class NoneSound:
+
+        class NoneSound(object):
             """
 
             Empty class if system can't use pygame.mixer
@@ -84,7 +88,8 @@ class ResourceLoader():
             def __init__(self):
                 pass
 
-            def play(self):
+            @staticmethod
+            def play():
                 """
 
                 Function made for compatibility
@@ -102,7 +107,8 @@ class ResourceLoader():
             raise SystemExit
         return sound
 
-    def make_button(self, color=(107, 142, 35), x=0, y=0, length=200,
+    @staticmethod
+    def make_button(color=(107, 142, 35), x=0, y=0, length=200,
                     height = 100, width=1, text="Example", text_color=(255,
                                                                        255,
                                                                        255)):
@@ -123,7 +129,8 @@ class ResourceLoader():
                                 text, text_color)
         return button
 
-    def get_words(self):
+    @staticmethod
+    def get_words():
         """
 
         Get word list and return a random word
@@ -134,7 +141,7 @@ class ResourceLoader():
         file.close()
         # replaces anything that is not a lowercase letter, a space, or an
         # apostrophe with a space:
-        text = re.sub('[^a-z\ \']+', " ", text)
+        text = re.sub('[^a-z\']+', " ", text)
         words = list(text.split())
         # print("Words:\n", words)  # DEBUGGING
         word = random.choice(words)

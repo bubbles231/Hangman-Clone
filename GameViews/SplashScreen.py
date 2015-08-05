@@ -6,7 +6,7 @@ This will be my SplashScreen for the game.
 import pygame
 
 
-class SplashScreen():
+class SplashScreen(object):
     """
 
     Used by game to make the SplashScreen
@@ -19,9 +19,9 @@ class SplashScreen():
         self.b_sound2 = gm.resource_loader.load_sound('MouseButtonDown.wav')
         self.button_one = gm.resource_loader.make_button(
             (251, 251, 251), gm.screen_rect.width / 2 - 50,
-            gm.screen_rect.height / 2 - 25, 100, 50, 0, "Click Me", (10, 10,10))
+            gm.screen_rect.height / 2 - 25, 100, 50, 0, "Click Me", (10, 10, 10))
         if gm.fullscreen:
-            pass  #  It will never come to splash screen on fullscreen
+            pass  # It will never come to splash screen on fullscreen
 
     def get_input(self, gm):
         """

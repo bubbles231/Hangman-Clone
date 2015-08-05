@@ -13,7 +13,6 @@ def buttons_dict_maker(gm):
     :param gm: Pass GameManger to get screen dimensions
     :return: buttons_dict
     """
-    # TODO: Add code to update button position when screen resolution changes.
     buttons_dict = {}
     button_width = 200
     button_height = 50
@@ -23,20 +22,20 @@ def buttons_dict_maker(gm):
     # print("x:", x, "y", y)  # DEBUGGING
     buttons_dict['start hangman'] = gm.resource_loader.make_button(
         (251, 251, 255), x, y, button_width, button_height, 0, 'Start Hangman',
-                                                            (10, 10, 10))
+        (10, 10, 10))
     y += (button_height + padding)
     buttons_dict['settings'] = gm.resource_loader.make_button(
         (251, 251, 255), x, y, button_width, button_height, 0, 'Settings',
-                                                            (10, 10, 10))
+        (10, 10, 10))
     y += (button_height + padding)
     buttons_dict['quit'] = gm.resource_loader.make_button(
         (251, 251, 255), x, y, button_width, button_height, 0, 'Quit',
-                                                            (10, 10, 10))
+        (10, 10, 10))
 
     return buttons_dict
 
 
-class MainMenu():
+class MainMenu(object):
     """
 
     Used by game to make the MainMenu.
