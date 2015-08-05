@@ -43,11 +43,6 @@ class MainGame():
             if (event.type == pygame.QUIT or event.type == pygame.KEYDOWN and
                     event.key == pygame.K_ESCAPE):
                 gm.playing = False
-            #  if event.type == pygame.MOUSEBUTTONDOWN:
-            #      self.b_sound1.play()
-            #      print("Mousebutton down!")
-            #      test_word = gm.resource_loader.get_words()
-            #      print("test_word:", test_word)
             key_guess = ""
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_a:
@@ -159,7 +154,8 @@ class MainGame():
             self.hangman_cnt -= 1
 
 
-    def print_my_word(self, word):
+    @staticmethod
+    def print_my_word(word):
         tmp = ""
         for i in word:
             tmp += word[i]

@@ -29,11 +29,9 @@ class GameManager:
         self.screen_rect = self.screen.get_rect()
         pygame.display.set_caption(self.caption)
         pygame.mixer.init(self.sample_rate)  # All sound effects will have this sample rate
-        """
-        Hardcoded to SplashScreen because that is how the game is designed to
-        start. If you want another GameView class make your own set or modify
-        my code.
-        """
+        #  Hardcoded to SplashScreen because that is how the game is designed to
+        #  start. If you want another GameView class make your own set or modify
+        #  my code.
         self.resource_loader = ResourceLoader()
         self.current_screen = self.resource_loader.load_class('splash screen',
                                                               self)
