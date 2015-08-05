@@ -21,9 +21,8 @@ def buttons_dict_maker(gm):
     x = gm.screen_rect.centerx - button_width / 2
     y = gm.screen_rect.centery - 150
     # print("x:", x, "y", y)  # DEBUGGING
-    buttons_dict['start 1 player'] = gm.resource_loader.make_button(
-        (251, 251, 255), x, y, button_width, button_height, 0, 'Start 1 '
-                                                               'Player',
+    buttons_dict['start hangman'] = gm.resource_loader.make_button(
+        (251, 251, 255), x, y, button_width, button_height, 0, 'Start Hangman',
                                                             (10, 10, 10))
     y += (button_height + padding)
     buttons_dict['settings'] = gm.resource_loader.make_button(
@@ -46,7 +45,7 @@ class MainMenu():
     def __init__(self, gm):
         self.bg = pygame.Surface((gm.screen_rect.width, gm.screen_rect.height))
         self.bg_rect = self.bg.get_rect()
-        self.bg_color = ((100, 140, 50))
+        self.bg_color = ((150, 150, 150))
         self.bg.fill(self.bg_color)
         gm.screen.blit(self.bg, self.bg_rect)
         self.buttons = buttons_dict_maker(gm)
@@ -64,7 +63,7 @@ class MainMenu():
                     event.key == pygame.K_ESCAPE):
                 gm.playing = False
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if self.buttons['start 1 player'].pressed(
+                if self.buttons['start hangman'].pressed(
                         pygame.mouse.get_pos()):
                     self.b_sound2.play()
                     gm.current_screen = gm.resource_loader.load_class(
@@ -99,7 +98,7 @@ class MainMenu():
         :param gm: GameManager class
         :return: None
         """
-        self.buttons['start 1 player'].draw_button(self.bg)
+        self.buttons['start hangman'].draw_button(self.bg)
         self.buttons['settings'].draw_button(self.bg)
         self.buttons['quit'].draw_button(self.bg)
         gm.screen.blit(self.bg, self.bg_rect)

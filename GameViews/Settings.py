@@ -22,14 +22,17 @@ def buttons_dict_maker(gm):
     y = gm.screen_rect.centery - 150
     # print("x:", x, "y", y)  # DEBUGGING
     buttons_dict['fullscreen'] = gm.resource_loader.make_button(
-        (251, 251, 255), x, y, button_width, button_height, 0, 'Toggle '
+        (251, 251, 255), x, y, button_width, button_height, 0,
                                                                'Fullscreen',
+                                                            (10, 10, 10))
+    y += (button_height + padding)
+    buttons_dict['back'] = gm.resource_loader.make_button(
+        (251, 251, 255), x, y, button_width, button_height, 0, 'Back',
                                                             (10, 10, 10))
     y += (button_height + padding)
     buttons_dict['quit'] = gm.resource_loader.make_button(
         (251, 251, 255), x, y, button_width, button_height, 0, 'Quit',
                                                             (10, 10, 10))
-
     return buttons_dict
 
 
@@ -39,7 +42,7 @@ def change_res(gm):
     :param gm:
     :return:
     """
-    print("CHANGING RES!")
+    #  print("CHANGING RES!")
     if not gm.fullscreen:
         gm.fullscreen = True
         gm.screen = pygame.display.set_mode((1600, 900), pygame.FULLSCREEN)
@@ -63,7 +66,7 @@ class Settings():
     def __init__(self, gm):
         self.bg = pygame.Surface((gm.screen_rect.width, gm.screen_rect.height))
         self.bg_rect = self.bg.get_rect()
-        self.bg_color = (10, 35, 140)
+        self.bg_color = (180, 190, 180)
         self.bg.fill(self.bg_color)
         gm.screen.blit(self.bg, self.bg_rect)
         self.buttons = buttons_dict_maker(gm)
@@ -86,6 +89,10 @@ class Settings():
                     self.b_sound2.play()
                     change_res(gm)
                     print("Resolution has been pressed!")
+                elif self.buttons['back'].pressed(
+                        pygame.mouse.get_pos()):
+                    self.b_sound2.play()
+                    gm.current_screen = gm.resource_loader.load_class("main menu", gm)
                 elif self.buttons['quit'].pressed(
                         pygame.mouse.get_pos()):
                     self.b_sound2.play()
@@ -106,6 +113,7 @@ class Settings():
         :return:
         """
         self.buttons['fullscreen'].draw_button(self.bg)
+        self.buttons['back'].draw_button(self.bg)
         self.buttons['quit'].draw_button(self.bg)
         gm.screen.blit(self.bg, self.bg_rect)
         pygame.display.flip()
