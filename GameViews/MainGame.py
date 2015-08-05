@@ -51,82 +51,56 @@ class MainGame():
             key_guess = ""
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_a:
-                    print('a')
                     key_guess = 'a'
                 elif event.key == pygame.K_b:
-                    print('b')
                     key_guess = 'b'
                 elif event.key == pygame.K_c:
-                    print('c')
                     key_guess = 'c'
                 elif event.key == pygame.K_d:
-                    print('d')
                     key_guess = 'd'
                 elif event.key == pygame.K_e:
-                    print('e')
                     key_guess = 'e'
                 elif event.key == pygame.K_f:
-                    print('f')
                     key_guess = 'f'
                 elif event.key == pygame.K_g:
-                    print('g')
                     key_guess = 'g'
                 elif event.key == pygame.K_h:
-                    print('h')
                     key_guess = 'h'
                 elif event.key == pygame.K_i:
-                    print('i')
                     key_guess = 'i'
                 elif event.key == pygame.K_j:
-                    print('j')
                     key_guess = 'j'
                 elif event.key == pygame.K_k:
-                    print('k')
                     key_guess = 'k'
                 elif event.key == pygame.K_m:
-                    print('m')
                     key_guess = 'm'
                 elif event.key == pygame.K_n:
-                    print('n')
                     key_guess = 'n'
                 elif event.key == pygame.K_l:
-                    print('l')
                     key_guess = 'l'
                 elif event.key == pygame.K_o:
-                    print('o')
                     key_guess = 'o'
                 elif event.key == pygame.K_p:
-                    print('p')
                     key_guess = 'p'
                 elif event.key == pygame.K_q:
-                    print('q')
                     key_guess = 'q'
                 elif event.key == pygame.K_r:
-                    print('r')
                     key_guess = 'r'
                 elif event.key == pygame.K_s:
-                    print('s')
                     key_guess = 's'
                 elif event.key == pygame.K_t:
-                    print('t')
                     key_guess = 't'
                 elif event.key == pygame.K_u:
-                    print('u')
                     key_guess = 'u'
                 elif event.key == pygame.K_v:
-                    print('v')
                     key_guess = 'v'
                 elif event.key == pygame.K_w:
-                    print('w')
                     key_guess = 'w'
                 elif event.key == pygame.K_x:
-                    print('x')
                     key_guess = 'x'
                 elif event.key == pygame.K_y:
-                    print('y')
                     key_guess = 'y'
                 elif event.key == pygame.K_z:
-                    print('z')
                     key_guess = 'z'
                 self.key_guess = key_guess
 
@@ -162,7 +136,6 @@ class MainGame():
         for i in self.already_guess:
             if guess == i:
                 print("You have already guessed this letter!")
-                print("Please guess another letter...")
                 return
         correct_guess = False
         for i in self.word:

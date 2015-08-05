@@ -42,18 +42,17 @@ def change_res(gm):
     :param gm:
     :return:
     """
-    #  print("CHANGING RES!")
     if not gm.fullscreen:
         gm.fullscreen = True
         gm.screen = pygame.display.set_mode((1600, 900), pygame.FULLSCREEN)
         gm.screen_rect = gm.screen.get_rect()
-        print(gm.screen_rect)
+        #  print(gm.screen_rect)
         gm.current_screen = gm.resource_loader.load_class("main menu", gm)
     else:
         gm.fullscreen = False
         gm.screen = pygame.display.set_mode((640, 400))
         gm.screen_rect = gm.screen.get_rect()
-        print(gm.screen_rect)
+        #  print(gm.screen_rect)
         gm.current_screen = gm.resource_loader.load_class("main menu", gm)
 
 
@@ -88,7 +87,6 @@ class Settings():
                         pygame.mouse.get_pos()):
                     self.b_sound2.play()
                     change_res(gm)
-                    print("Resolution has been pressed!")
                 elif self.buttons['back'].pressed(
                         pygame.mouse.get_pos()):
                     self.b_sound2.play()
