@@ -22,6 +22,8 @@ class MainGame():
         self.guess_word = {}
         for i in range(0, len(self.word)):
             self.guess_word[i] = "_"
+        print("Welcome to Hangman!")
+        self.print_my_word(self.guess_word)
         self.hangman_cnt = 7
         self.key_guess = ""
         self.already_guess = []
@@ -136,20 +138,19 @@ class MainGame():
         for i in self.word:
             if guess == self.word[i]:
                 self.guess_word[i] = self.word[i]
-                self.already_guess.append(guess)
                 correct_guess = True
 
         if correct_guess:
             print("Good Guess, you found a letter!")
             self.print_my_word(self.guess_word)
-            if self.guessed_word():
+            if self.guess_word == self.word:
                 print("You Win!")
                 gm.current_screen = gm.resource_loader.load_class(
                     "main menu", gm)
-
         else:
             print("That letter isn't in the word, try again...")
             print("What you have guessed so far:")
+            self.already_guess.append(guess)
             self.print_my_word(self.guess_word)
             self.hangman_cnt -= 1
 
@@ -160,7 +161,3 @@ class MainGame():
         for i in word:
             tmp += word[i]
         print(tmp, '\n')
-
-    def guessed_word(self):
-        if self.guess_word == self.word:
-            return True
