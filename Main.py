@@ -2,6 +2,7 @@
 """
 __Arthur Marble__
 Main File for Hangman game. This is where all the magic starts.
+Cleaned up local git branch.
 """
 from Engine.GameManager import *
 
